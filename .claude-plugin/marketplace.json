@@ -1,0 +1,26 @@
+{
+  "name": "kauneonga-admin",
+  "owner": {
+    "name": "Kauneonga LLC",
+    "url": "https://www.kauneonga.com"
+  },
+  "metadata": {
+    "description": "The Kauneonga admin plugin for Claude: run your answering service with your own Admin Portal login."
+  },
+  "plugins": [
+    {
+      "name": "kauneonga-admin",
+      "source": "./",
+      "description": "Run your answering service from Claude with your own Admin Portal login: set up clients, phone lines and numbers, port numbers in, build call scripts, on-call calendars and AI receptionists, and review messages and reports.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Kauneonga LLC",
+        "url": "https://www.kauneonga.com"
+      },
+      "homepage": "https://www.kauneonga.com/",
+      "repository": "https://github.com/Kauneonga/kauneonga-admin-plugin",
+      "license": "MIT",
+      "category": "productivity"
+    }
+  ]
+}

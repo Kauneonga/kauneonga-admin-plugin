@@ -1,0 +1,48 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "kauneonga-admin",
+  "version": "1.0.0",
+  "description": "Run your answering service with your own Admin Portal login: clients, phone lines, numbers and porting, call scripts, on-call calendars, AI receptionists, messages and reports.",
+  "author": {
+    "name": "Kauneonga LLC",
+    "url": "https://www.kauneonga.com"
+  },
+  "homepage": "https://www.kauneonga.com/",
+  "repository": "https://github.com/Kauneonga/kauneonga-admin-plugin",
+  "license": "MIT",
+  "keywords": [
+    "answering-service",
+    "admin",
+    "call-scripts",
+    "on-call",
+    "phone-numbers",
+    "ai-receptionist",
+    "mcp"
+  ],
+  "extensions": {
+    "com.openai": {
+      "onboardingSkill": "./skills/setup/SKILL.md",
+      "interface": {
+        "displayName": "Kauneonga Admin",
+        "shortDescription": "Run your answering service",
+        "longDescription": "Connect your Admin Portal login to set up client accounts and phone lines, buy, move and port numbers, build call scripts and on-call calendars, set up and test AI receptionists, and review messages, SMS conversations and reports. You see and change only what your Admin Portal role allows, and every change is confirmed with you first.",
+        "developerName": "Kauneonga LLC",
+        "logo": "./assets/logo.png",
+        "category": "Productivity",
+        "capabilities": [
+          "Read",
+          "Write"
+        ],
+        "websiteURL": "https://www.kauneonga.com/",
+        "supportURL": "https://www.kauneonga.com/",
+        "privacyPolicyURL": "https://www.kauneonga.com/privacy-policy/",
+        "termsOfServiceURL": "https://www.kauneonga.com/terms-and-conditions/",
+        "defaultPrompt": [
+          "Which clients had the most messages this week?",
+          "Who's on call tonight for this client's line?",
+          "Help me set up a new client account."
+        ]
+      }
+    }
+  }
+}
