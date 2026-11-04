@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "kauneonga-admin": {
+      "type": "http",
+      "url": "https://mcp-admins.kauneonga.com/api/v2/mcp"
+    }
+  }
+}
