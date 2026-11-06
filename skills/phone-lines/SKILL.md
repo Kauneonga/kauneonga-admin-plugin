@@ -19,6 +19,10 @@ account has several lines, ask which one.
 phone, address, time zone, website, company info, opening and closing messages, special
 instructions, agent notes, or its skill. Read the line back with `get_phone`.
 
+**Skill:** `get_phone` shows the line's current skill by name. To change it, send
+`skill_name` with the name exactly as `list_skills` shows it (or `skill_id`). A name
+that matches no skill, or more than one, comes back with the choices.
+
 ## IVR
 
 1. `get_phone_ivr` first.

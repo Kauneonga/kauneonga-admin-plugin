@@ -44,15 +44,32 @@ number at the AI right away, so it's the one step that reaches callers.
 `test_call_ai_assistant` places a real call to the number the admin gives, from the
 assistant's number. Use the admin's own phone and confirm it first.
 
+Every call the assistant logs becomes a message to whoever is on call for the line, test
+calls included. Before a test call, `get_phone` shows who that is (`message_recipients`).
+If it's the client, say so and offer to point the line's messages to your own staff first
+(`on-call-setup`, "Cover for a while").
+
 ## Publish
 
 1. `assign_ai_assistant` makes it the line's main assistant. Nothing changes for callers
    yet.
 2. Publish any handoff assistants first, so the main one can reach them.
-3. Say exactly which number will start being answered by the AI, then
+3. Say exactly which number will start being answered by the AI and who will get its
+   messages (`message_recipients` on `get_phone` or `get_ai_assistant`), then
    `publish_ai_assistant` only once the admin confirms.
 4. `unpublish_ai_assistant` takes it off the number. `archive_ai_assistant` and
    `restore_ai_assistant` put a retired assistant away or bring it back.
+
+## Other languages
+
+- **One voice:** language `auto` answers callers in the language they speak.
+- **A native voice per language:** one assistant per language, such as "Front Desk
+  Spanish" with language `es` and a voice from `list_ai_assistant_voices`. Publish each
+  language assistant first (a handoff assistant only syncs), then save the main
+  assistant's `agent_handoff` tool card with `update_ai_assistant_tool`, naming each
+  language assistant and when to hand over (the caller speaks that language). Handoff
+  targets must be active assistants on the same line. The main greeting can invite
+  callers to speak those languages.
 
 ## How it's doing
 
