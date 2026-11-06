@@ -36,6 +36,14 @@ number at the AI right away, so it's the one step that reaches callers.
   `test_ai_assistant_webhook` checks a webhook tool. `register_ai_assistant_mcp_server`
   connects one of the client's own MCP servers; its token is stored securely, never in
   the chat.
+- Webhook tools can call a client's own API, such as opening a ticket in their CRM:
+  `{name}` in the address for a value in the path, query and body fields (dotted body
+  names nest), and fixed values sent on every call that the assistant never sees, such
+  as a ticket type. The shape is in `update_ai_assistant_tool`'s description. An API key
+  is stored by an admin in the builder (the endpoint's Authentication tab, Stored key);
+  never ask for one in the chat or put one in the settings. Before going live, run
+  `test_ai_assistant_webhook` with sample values (confirm first: the client's system
+  acts on it), then a test call.
 - `get_ai_assistant_review` ranks what to fix, such as no way to reach a person, or
   prices it shouldn't quote. Run it before publishing.
 
