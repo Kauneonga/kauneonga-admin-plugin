@@ -1,97 +1,104 @@
-# Kauneonga Admin plugin
+# Kauneonga Admin — connect your AI assistant
 
-Use Claude to work with your answering service's Kauneonga Admin Portal in plain English. You can review messages and reports, manage on-call schedules and call scripts, configure phone lines, set up clients, and more.
+Use an AI assistant with your answering service's Kauneonga Admin Portal to review messages and reports, manage on-call calendars, update call scripts, configure phone lines, and help set up clients.
 
-**For authorized answering-service administrators.** This plugin works with your own Admin Portal login and cannot grant permissions beyond the role you already have.
+**For authorized answering-service administrators.** The [plugin repository](https://github.com/Kauneonga/kauneonga-admin-plugin) is **public** and the connector enforces your own Admin Portal permissions. If you are an answering-service **client**, use the separate [Kauneonga client plugin](https://github.com/Kauneonga/kauneonga-plugin) instead.
 
-Are you an answering-service **client** rather than an administrator? Use the separate [Kauneonga client plugin](https://github.com/Kauneonga/kauneonga-plugin) instead.
+## Choose your AI assistant
 
-## Set up in Claude (no technical experience needed)
+You **do not need to write code** to use the Claude or ChatGPT instructions below. Other applications may require an administrator to complete the connection first.
 
-You do **not** need to install software, use a terminal, or write code. The plugin's [GitHub repository](https://github.com/Kauneonga/kauneonga-admin-plugin) is public, so you do not need an invitation to view it.
+| AI assistant | How to connect | What you get |
+| --- | --- | --- |
+| **Claude** | Install **kauneonga-admin** from an approved plugin marketplace | **Full plugin**, including guided skills and the MCP connection |
+| **ChatGPT** | Install the workspace's approved plugin, or have a ChatGPT admin add the custom MCP server | **MCP tools**; a separately distributed full plugin is needed for bundled skills |
+| **Gemini Enterprise** | Ask a Gemini Enterprise administrator to connect the MCP server | **MCP tools** after OAuth and tools are configured and validated |
+| **Personal Gemini** | Eligible personal accounts may add a custom app using the MCP URL | **MCP tools only**, subject to account eligibility and company security policy |
+| **Gemini CLI, Codex, Cursor and other compatible agents** | Connect the MCP URL; install compatible skills separately | Tool access, with skills only where the agent supports them |
 
-**Before you start**, have your usual Admin Portal web address and login ready. You need a Claude account with plugin support.
+**Important:** A **full plugin** bundles task-specific skills *and* the MCP connection. An **MCP-only connection** can expose tools, but does **not automatically install** the same guided skills in every AI assistant. Exact features depend on each application's support. Installation or live sign-in in every client has not been independently verified.
 
-### 1. Add Kauneonga Admin to Claude
+**Admin MCP address:** `https://mcp-admins.kauneonga.com/api/v2/mcp`
 
-1. Open [Claude](https://claude.ai) and sign in.
-2. In the left sidebar, select **Customize > Plugins**.
-3. Click **Add > Add marketplace > Add from a repository**.
-4. Paste this repository name:
+**Before starting:** Have the normal web address for your Admin Portal, your own login, and any required two-factor authentication available. Use only AI accounts and workspaces approved by your organization for client information.
 
-   `Kauneonga/kauneonga-admin-plugin`
+## Claude — full plugin (recommended if you want guided skills)
 
-5. Add the marketplace. Find **kauneonga-admin** in its plugin list and click **Add** to install it.
+**Plan requirement:** Claude plugins are available on paid Claude plans (Pro, Max, Ultra, Team, or Enterprise). If you use Claude Free, you may not see the Plugins menu.
 
-If your Claude organization has already made the plugin available, you may find it under **Customize > Plugins > Discover** instead. In that case, just click **Add**.
+**For individual users:** the public GitHub repository can be added directly to Claude. If your Claude organization has already distributed the plugin, it may be available under **Customize > Plugins > Discover** instead.
 
-### 2. Connect your Admin Portal
+1. Open [Claude](https://claude.ai) and select **Customize > Plugins**.
+2. Select **Add > Add marketplace > Add from a repository**.
+3. Enter `Kauneonga/kauneonga-admin-plugin` and add the marketplace.
+4. Find **kauneonga-admin** and select **Add**. Or, if your organization already provides it, find it under **Discover**.
+5. Start a chat and ask, "Which clients had the most messages this week?"
+6. If prompted, connect the plugin. Enter the **web address of your usual Admin Portal** if requested, then sign in with your own credentials and complete two-factor authentication if required.
 
-1. Start a new conversation in Claude.
-2. Ask: **"Which clients had the most messages this week?"**
-3. When asked to connect Kauneonga Admin, choose **Connect** or **Allow**.
-4. If prompted, enter the **web address you normally use to access your Admin Portal**.
-5. Sign in on the secure Admin Portal sign-in page using **your own** credentials, complete two-factor authentication if required, and authorize access.
+After signing in, try: **"Show me messages that still need follow-up."**
 
-Only enter your password on the Admin Portal sign-in page, **not** in a Claude chat.
+[Claude's plugin setup guide](https://support.claude.com/en/articles/13837440-use-plugins-in-claude)
 
-### 3. Try a few questions
+## ChatGPT — connect with the MCP server
 
-- "Which clients had the most messages this week?"
-- "How have our service levels changed this week?"
-- "Who is on call for this client's line tonight?"
-- "Find messages that still need follow-up."
-- "Help me create a call script for a new client."
+**If your ChatGPT workspace already provides Kauneonga Admin:**
 
-You can start with reports and message searches before asking Claude to make changes.
+1. Open [ChatGPT](https://chatgpt.com) and find the approved plugin under **Settings > Plugins** (or the **Plugins** directory).
+2. Install or enable it if needed, then connect it with your **own Admin Portal login** when prompted.
+3. Start a chat, type **@**, choose the Kauneonga Admin plugin, and ask a reporting question.
 
-### If something isn't working
+**If the plugin is not available:** A ChatGPT Business or Enterprise/Edu **workspace administrator** (or an authorized Enterprise/Edu developer) can set it up:
 
-- **Can't find "Add marketplace"?** Your Claude organization may restrict custom marketplaces. Ask your Claude account owner to approve or distribute the plugin.
-- **Added the marketplace, but don't see Kauneonga Admin?** Return to **Customize > Plugins**, open the added marketplace, and add **kauneonga-admin** from its list.
-- **Sign-in asks for a portal address?** Use your normal Admin Portal web address, not the GitHub link or the MCP connector address.
-- **Access denied or data missing?** Your Admin Portal permissions still apply. Ask your portal administrator to verify your account's access.
-- **Asked to confirm a change?** Review what Claude is about to do before approving it.
+1. In ChatGPT on the web, open **Plugins**, select **+ > Add custom MCP server**.
+2. Set the name to **Kauneonga Admin** and enter `https://mcp-admins.kauneonga.com/api/v2/mcp` as the server URL.
+3. Set up the server's OAuth authentication, review the security warning, and select **Create as a plugin**.
+4. Review the discovered tools and test the connection with an authorized Admin Portal account. Confirm read and write permissions before enabling them.
+5. A workspace **admin/owner** publishes the approved connection for permitted team members.
 
-See Anthropic's [Use plugins in Claude](https://support.claude.com/en/articles/13837440-use-plugins-in-claude) help article for the latest interface instructions.
+This is **not** the same as importing the GitHub repository's guided skills. To distribute the **full** portable plugin in ChatGPT, the plugin package needs a supported OpenAI installation or distribution route; do not assume that adding the MCP URL imports its skills.
 
-## For Claude organization owners: making it available to staff
+ChatGPT custom MCP support and permission controls vary by plan and workspace. [ChatGPT setup instructions](https://help.openai.com/en/articles/12584461-connecting-custom-mcp-servers-in-chatgpt) · [Plugin packaging](https://developers.openai.com/plugins/build/plugins)
 
-You can offer the plugin to your team so employees do not have to add the GitHub marketplace individually.
+## Gemini — Google AI options
 
-**Important:** This repository is **public**. Anthropic currently **does not allow public GitHub repositories to be used directly as organization-synced marketplaces**. That restriction is different from adding the public repository as a *personal* marketplace above.
+### Gemini Enterprise (recommended route for managed business use)
 
-Organization owners have two options:
+This requires setup by an **authorized Gemini Enterprise / Google Cloud administrator**, rather than an individual user simply installing the GitHub plugin.
 
-1. **Manual organization installation:** Prepare a Claude-compatible plugin ZIP from the approved repository contents. In Claude, go to **Organization settings > Plugins & skills**, choose **Add > Upload a plugin**, and distribute it to authorized members or groups.
-2. **GitHub-synced organization marketplace:** Maintain an approved **private or internal** marketplace repository, then use **Organization settings > Plugins & skills > Marketplaces > Add plugins > Sync from GitHub** with that repository. Do not try to sync this public repository directly.
+1. In Gemini Enterprise, configure a **custom MCP server data store** for `Kauneonga Admin` using `https://mcp-admins.kauneonga.com/api/v2/mcp`.
+2. Configure a supported **OAuth 2.0** integration. Google requires the relevant authorization and token URLs, client registration, scopes, and any required redirects. These must be confirmed against the server's actual OAuth configuration.
+3. Verify authentication, choose which MCP tools/actions to enable, and limit access to authorized administrators.
+4. Test a read-only reporting request using a permitted account before enabling administrative write actions.
 
-For option 2, **Sync automatically** starts enabled. Turning that setting on or off requires **GitHub Admin access** to the synced repository; automatic sync also requires the Claude GitHub App's approved **Webhooks (Read & Write)** permission. If your team prefers manual updates, have a repository administrator set up the marketplace with automatic syncing disabled, then use **Re-sync** for later updates.
+**The connection is not yet confirmed as a one-click supported integration.** Your technical administrator must test the Gemini Enterprise OAuth flow and tool compatibility.
 
-After distributing the plugin, confirm that an authorized employee can find it under **Customize > Plugins > Discover** and sign in with their own Admin Portal account.
+[Gemini Enterprise custom MCP setup](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/custom-mcp-server/set-up-custom-mcp-server)
 
-See Anthropic's [Manage plugins for your organization](https://support.claude.com/en/articles/13837433-manage-plugins-for-your-organization) guide for setup and permission requirements.
+### Personal Gemini custom apps (eligibility and policy restrictions)
 
-## What you can do
+Google offers custom MCP connections in the Gemini web app for eligible **US adults using a personal Google Account** with **Keep Activity enabled**. It is **not currently available with work or school Google accounts**. This route does not install this repository's guided skills.
 
-- **Reports and quality:** Review activity, usage, service levels, QA reports, and SMS conversations.
-- **Messages:** Find and act on messages and To Dos.
-- **On-call:** Review and update on-call shifts, escalation levels, and contact methods.
-- **Phone lines and scripts:** Manage line settings, IVR, SMS routing, contacts, features, and call scripts.
-- **New clients:** Set up an account, phone numbers, a script, an on-call calendar, and authorized users.
-- **Numbers and porting:** Search, buy, move, forward, release, and port phone numbers.
-- **AI receptionists:** Create, test, and publish an AI receptionist.
+For an account that is both **eligible and expressly approved for the intended data**, go to [gemini.google.com](https://gemini.google.com), open **Settings > Connected Apps > Add a custom app**, enter `https://mcp-admins.kauneonga.com/api/v2/mcp`, and follow the authentication prompts. You can then select the connected app using **@** in Gemini.
 
-## Safeguards
+**Do not connect live customer or employee information through a personal AI account without company authorization and a privacy/security review.** If approval is not in place, use a managed Claude/ChatGPT workspace or evaluate Gemini Enterprise instead. OAuth compatibility still needs testing.
 
-- **Your Admin Portal role controls access.** The connector cannot increase your permissions.
-- **Changes require confirmation.** Claude calls out actions involving cost, live calls, or changes that may be difficult to reverse.
-- **Use your own credentials.** Never share passwords, two-factor codes, or porting PINs in chat.
-- **Do not enter payment card information into a chat.**
+[Google's Gemini custom-app instructions](https://support.google.com/gemini/answer/17209137)
 
-## Other ways to connect (technical users)
+## Other assistants (technical setup)
 
-These options are for users who already work with developer tools. If you just want to use Claude chat, follow **Set up in Claude** above.
+These are alternatives for people already comfortable configuring agent tools.
+
+### Gemini CLI
+
+Gemini CLI supports remote Streamable HTTP MCP servers with OAuth discovery. To add this connection:
+
+```bash
+gemini mcp add -t http -s user kauneonga-admin https://mcp-admins.kauneonga.com/api/v2/mcp
+```
+
+Then run `gemini mcp list` or `/mcp` and complete any prompted authorization. Gemini CLI also supports compatible Agent Skills, but those skills are separate from connecting this MCP server.
+
+[Gemini CLI MCP documentation](https://geminicli.com/docs/tools/mcp-server/)
 
 ### Claude Code
 
@@ -99,49 +106,67 @@ These options are for users who already work with developer tools. If you just w
 /plugin install kauneonga-admin --marketplace Kauneonga/kauneonga-admin-plugin
 ```
 
-On Claude Code versions older than 2.1.275, add the marketplace first:
+On older Claude Code versions, add the marketplace first:
 
 ```text
 /plugin marketplace add Kauneonga/kauneonga-admin-plugin
 /plugin install kauneonga-admin@kauneonga-admin
 ```
 
-### MCP connector only (without the plugin's guided skills)
+The GitHub repository is public.
 
-In Claude, open **Settings > Connectors**, add a custom connector, and enter:
+### Cursor, Codex, and other MCP-compatible agents
 
-`https://mcp-admins.kauneonga.com/api/v2/mcp`
+Add an MCP server named `kauneonga-admin`, choose **remote Streamable HTTP**, and enter `https://mcp-admins.kauneonga.com/api/v2/mcp`. Complete OAuth sign-in when supported. Follow the chosen agent's documentation for separately installing compatible skills from `skills/` in this repository. Support for remote OAuth, tool confirmations, and skill import varies by agent.
 
-This connects Claude to the Admin Portal, but does not include the plugin's guided skills.
+**If you only want the MCP tools in Claude**, use **Settings > Connectors > Add custom connector** and enter the same server URL. That does not install the full plugin's guided skills.
 
-### ChatGPT
+## What you can ask
 
-Add a custom connector in ChatGPT with the address above. The plugin's skills can be included when the full plugin package is supported and installed.
+- "Which clients had the most messages this week?"
+- "Compare service levels this week with last week."
+- "Find messages and To Dos that still need follow-up."
+- "Who is on call for this client's line tonight?"
+- "Help me draft a new call script."
+- "Help me set up a new client account."
 
-### Codex, Cursor, and other agents
+Start with **read-only** tasks until you are comfortable with the connection.
 
-Install the skills:
+## Security and troubleshooting
 
-```bash
-npx skills add Kauneonga/kauneonga-admin-plugin
-```
+- **Your Admin Portal permissions still apply.** Connecting an AI app does not make you an administrator or grant new privileges.
+- **Review every proposed change.** Purchases, number changes, dispatch, live calls, and irreversible actions deserve extra care. Confirm the details in the Admin Portal if necessary.
+- **Protect credentials.** Enter passwords and two-factor codes only in the secure sign-in flow, never in chat. Do not paste payment card information, porting PINs, or customer secrets into a conversation.
+- **Can't find the plugin in Claude or ChatGPT?** Ask your organization's AI workspace administrator to publish or approve it.
+- **Can't sign in?** Check the Admin Portal web address, OAuth approval and allowed client settings with your administrator; do not work around access restrictions.
+- **A tool is unavailable?** The AI application may support MCP but not that specific tool, write operation, or bundled skill. Test it on a nonproduction or read-only task first.
 
-Then add `https://mcp-admins.kauneonga.com/api/v2/mcp` in the agent's MCP settings. The server uses OAuth for sign-in.
+## For Claude organization owners (one-time setup)
 
-## Plugin skills
+1. This GitHub repository is **public**. Claude currently **does not accept public github.com repositories for organization-synced marketplaces**.
+2. The simplest organization-wide option is **Organization settings > Plugins & skills > Add > Upload a plugin**, using a reviewed ZIP of the plugin.
+3. Alternatively, create a **private/internal marketplace repository** containing the approved plugin, then sync that private repository through **Marketplaces > Add plugins > Sync from GitHub**. Automatic sync requires GitHub Admin permission plus the Claude GitHub App's approved webhook permission; manual updates use **Re-sync**.
+4. In **Inventory**, make the plugin available to the intended staff or groups and verify installation under **Customize > Plugins > Discover**.
+
+[Claude organization setup reference](https://support.claude.com/en/articles/13837433-manage-plugins-for-your-organization)
+
+
+## Included guided skills
+
+These skills are packaged with the repository; their availability in your AI assistant depends on its skill/plugin support.
 
 | Skill | What it does |
 | --- | --- |
-| `kauneonga-admin` | Picks the right skill and coordinates multiple steps |
-| `setup` | Connects and checks Admin Portal access |
-| `new-client` | Sets up new clients |
+| `kauneonga-admin` | Routes requests to the right guided workflow |
+| `setup` | Checks connection and available permissions |
+| `new-client` | Helps set up new client accounts |
 | `numbers-and-porting` | Manages and ports phone numbers |
-| `phone-lines` | Changes line settings |
-| `call-scripts` | Writes and updates scripts |
+| `phone-lines` | Changes phone line settings |
+| `call-scripts` | Writes and updates call scripts |
 | `on-call-setup` | Manages on-call schedules |
-| `ai-receptionists` | Creates, tests, and publishes AI receptionists |
+| `ai-receptionists` | Builds and tests AI receptionists |
 | `message-triage` | Reviews messages and To Dos |
-| `reports-and-quality` | Provides reporting and quality analysis |
+| `reports-and-quality` | Analyzes activity and service quality |
 
 ## Privacy
 
@@ -149,4 +174,4 @@ See Kauneonga's [privacy policy](https://www.kauneonga.com/privacy-policy/) and 
 
 ---
 
-Maintaining this plugin? See [docs/MAINTAINING.md](docs/MAINTAINING.md). Licensed under the [MIT License](LICENSE).
+Maintaining this repository? See [docs/MAINTAINING.md](docs/MAINTAINING.md). Licensed under the [MIT License](LICENSE).
