@@ -66,7 +66,7 @@ Organization owners have two options:
 1. **Manual organization installation:** Prepare a Claude-compatible plugin ZIP from the approved repository contents. In Claude, go to **Organization settings > Plugins & skills**, choose **Add > Upload a plugin**, and distribute it to authorized members or groups.
 2. **GitHub-synced organization marketplace:** Maintain an approved **private or internal** marketplace repository, then use **Organization settings > Plugins & skills > Marketplaces > Add plugins > Sync from GitHub** with that repository. Do not try to sync this public repository directly.
 
-For option 2, Claude starts with **Sync automatically** enabled. Turning that on or off requires **GitHub Admin access** to the synced repository and the Claude GitHub App's approved **Webhooks (Read & Write)** permission for automatic syncing. If you only have GitHub Read access, **turn off "Sync automatically"** during setup and use **Re-sync** manually for future updates.
+For option 2, **Sync automatically** starts enabled. Turning that setting on or off requires **GitHub Admin access** to the synced repository; automatic sync also requires the Claude GitHub App's approved **Webhooks (Read & Write)** permission. If your team prefers manual updates, have a repository administrator set up the marketplace with automatic syncing disabled, then use **Re-sync** for later updates.
 
 After distributing the plugin, confirm that an authorized employee can find it under **Customize > Plugins > Discover** and sign in with their own Admin Portal account.
 
