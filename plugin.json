@@ -28,6 +28,7 @@
         "longDescription": "Connect your Admin Portal login to set up client accounts and phone lines, buy, move and port numbers, build call scripts and on-call calendars, set up and test AI receptionists, and review messages, SMS conversations and reports. You see and change only what your Admin Portal role allows, and every change is confirmed with you first.",
         "developerName": "Kauneonga LLC",
         "logo": "./assets/logo.png",
+        "composerIcon": "./assets/logo.png",
         "category": "Productivity",
         "capabilities": [
           "Read",
