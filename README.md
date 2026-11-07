@@ -24,6 +24,8 @@ You **do not need to write code** to use the Claude or ChatGPT instructions belo
 
 ## Claude — full plugin (recommended if you want guided skills)
 
+**Plan requirement:** Claude plugins are available on paid Claude plans (Pro, Max, Ultra, Team, or Enterprise). If you use Claude Free, you may not see the Plugins menu.
+
 **For individual users:** the public GitHub repository can be added directly to Claude. If your Claude organization has already distributed the plugin, it may be available under **Customize > Plugins > Discover** instead.
 
 1. Open [Claude](https://claude.ai) and select **Customize > Plugins**.
