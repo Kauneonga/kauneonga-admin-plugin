@@ -2,9 +2,11 @@
 
 Use an AI assistant with your answering service's Kauneonga Admin Portal to review messages and reports, manage on-call calendars, update call scripts, configure phone lines, and help set up clients.
 
-**For authorized answering-service administrators.** The [plugin repository](https://github.com/Kauneonga/kauneonga-admin-plugin) is **public** and the connector enforces your own Admin Portal permissions. If you are an answering-service **client**, use the separate [Kauneonga client plugin](https://github.com/Kauneonga/kauneonga-plugin) instead.
+**For answering-service operators and authorized administrators.** This [plugin repository](https://github.com/Kauneonga/kauneonga-admin-plugin) is public. Sign in with your own Admin Portal account; the connector respects your existing account permissions.
 
 ## Choose your AI assistant
+
+**MCP-only connection safety:** The full guided plugin teaches the AI to ask before making changes, but a direct MCP connection may not inherit those instructions. **Start with read-only tools.** Before allowing live-call, dispatch, phone-number, account, script, or other write actions, verify that the AI client enforces explicit confirmation of the exact target and effect, followed by result verification. If the AI client cannot restrict write tools or enforce these protections, **do not connect it to the production Admin MCP server**; use the approved full plugin or Admin Portal instead. Portal role permissions alone do not prevent unintended but authorized changes.
 
 You **do not need to write code** to use the Claude or ChatGPT instructions below. Other applications may require an administrator to complete the connection first.
 
@@ -115,9 +117,19 @@ On older Claude Code versions, add the marketplace first:
 
 The GitHub repository is public.
 
+### Install guided skills in compatible coding agents (npx)
+
+If you use Codex, Cursor, or another local agent with Agent Skills support, you can install this repository's guided skills with [the skills CLI](https://github.com/vercel-labs/skills/blob/main/docs/commands.md) (Node.js required):
+
+```bash
+npx skills add Kauneonga/kauneonga-admin-plugin
+```
+
+The CLI installs skills for compatible agents; it does **not** configure the MCP server or OAuth. These instructions do not replace tool-level confirmation, access checks, or readback verification. Configure the MCP connection separately and test only read-only tools until approved.
+
 ### Cursor, Codex, and other MCP-compatible agents
 
-Add an MCP server named `kauneonga-admin`, choose **remote Streamable HTTP**, and enter `https://mcp-admins.kauneonga.com/api/v2/mcp`. Complete OAuth sign-in when supported. Follow the chosen agent's documentation for separately installing compatible skills from `skills/` in this repository. Support for remote OAuth, tool confirmations, and skill import varies by agent.
+Only configure production access after a security review. Add an MCP server named `kauneonga-admin`, choose **remote Streamable HTTP**, and enter `https://mcp-admins.kauneonga.com/api/v2/mcp`. Complete OAuth sign-in when supported. Follow the chosen agent's documentation for separately installing compatible skills from `skills/` in this repository. Support for remote OAuth, tool confirmations, and skill import varies by agent.
 
 **If you only want the MCP tools in Claude**, use **Settings > Connectors > Add custom connector** and enter the same server URL. That does not install the full plugin's guided skills.
 
@@ -146,7 +158,7 @@ Start with **read-only** tasks until you are comfortable with the connection.
 1. This GitHub repository is **public**. Claude currently **does not accept public github.com repositories for organization-synced marketplaces**.
 2. The simplest organization-wide option is **Organization settings > Plugins & skills > Add > Upload a plugin**, using a reviewed ZIP of the plugin.
 3. Alternatively, create a **private/internal marketplace repository** containing the approved plugin, then sync that private repository through **Marketplaces > Add plugins > Sync from GitHub**. Automatic sync requires GitHub Admin permission plus the Claude GitHub App's approved webhook permission; manual updates use **Re-sync**.
-4. In **Inventory**, make the plugin available to the intended staff or groups and verify installation under **Customize > Plugins > Discover**.
+4. In **Inventory**, make the plugin available to the intended users or groups and verify installation under **Customize > Plugins > Discover**.
 
 [Claude organization setup reference](https://support.claude.com/en/articles/13837433-manage-plugins-for-your-organization)
 

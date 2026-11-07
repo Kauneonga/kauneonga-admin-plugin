@@ -23,7 +23,7 @@ EXPECTED_SKILLS = {
     "message-triage",
     "reports-and-quality",
 }
-# Public material must not name internal systems, vendors or staff-only roles.
+# Public material must not name internal systems, vendors or restricted internal roles.
 FORBIDDEN = re.compile(r"Super Admin|Liberty|Telnyx|drawer|Answering Service Care", re.IGNORECASE)
 PUBLIC_FILES = ["README.md", "plugin.json", ".claude-plugin/plugin.json", ".claude-plugin/marketplace.json"]
 
