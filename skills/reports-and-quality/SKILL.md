@@ -30,6 +30,9 @@ information; share only what's needed.
 - `get_service_level_report`: wait, talk and hold times and abandoned calls by skill.
 - `get_agent_performance_report`, `get_supervisor_analytics` and
   `get_supervisor_leaderboards` for how agents are doing.
+- Usage summaries and agent performance come back a page at a time. Follow `next_page`
+  before adding up or ranking. For one agent, pass `agent` (part of their name); for the
+  best or worst, `sort` by that number instead of reading every page.
 - `list_agents` and `get_agent` for who's working and their skills.
 
 ## Quality
