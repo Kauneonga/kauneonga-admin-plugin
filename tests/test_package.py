@@ -22,6 +22,8 @@ EXPECTED_SKILLS = {
     "ai-receptionists",
     "message-triage",
     "reports-and-quality",
+    "port-out-check",
+    "call-troubleshoot",
 }
 # Public material must not name internal systems, vendors or restricted internal roles.
 FORBIDDEN = re.compile(r"Super Admin|Liberty|Telnyx|drawer|Answering Service Care", re.IGNORECASE)
