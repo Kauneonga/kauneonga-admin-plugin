@@ -19,22 +19,24 @@ drafts the follow-ups; the porting team makes the decision.
 
 ## 2. An order the carrier says was sent but isn't listed
 
-- `get_number` on two or three numbers from the carrier's list, and on any number the
-  carrier or porting team flagged: whether it's held here, which account, whether a line
-  uses it.
-- `search_accounts` with a flagged number to see whose account it's on. A number on a
-  different account, or not held here at all, turns the order into a partial port, and
-  it's rejected.
+- `get_number` for every distinct number on the carrier's complete order, not just a
+  sample or the flagged numbers: whether it's held here, which account, and whether a
+  line uses it. Reconcile the checked count with the order's distinct-number count.
+- If a lookup fails or is denied, mark that number unverified and list what remains
+  unchecked. Do not report that the whole order matches until every number is verified.
+- `search_accounts` for each unmatched or mismatched number to establish whose account
+  it's on. A number on a different account, or not held here at all, turns the order
+  into a partial port, and it's rejected.
 - Say this every time: a toll-free order rejected automatically at the RespOrg may never
   appear in `list_port_outs`. A missing request doesn't prove nothing arrived, so ask the
   porting team to check the RespOrg side.
 
 ## Report
 
-A table: carrier order, support key, number count, status, port date. Then what's
-missing, numbers that don't belong on the order, dates that differ from what the carrier
-requested, and the risk to the port date, especially when only part of a client's numbers
-would move. Say what time the check was made.
+A table: carrier order, support key, number count, verified count, status, port date.
+Then what's missing, unverified numbers, numbers that don't belong on the order, dates
+that differ from what the carrier requested, and the risk to the port date, especially
+when only part of a client's numbers would move. Say what time the check was made.
 
 ## Drafts
 

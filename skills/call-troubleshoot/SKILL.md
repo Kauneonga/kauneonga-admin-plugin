@@ -18,9 +18,14 @@ time zone, the caller's number, and any call id the client has.
    Otherwise `list_inbound_calls` or `list_recent_calls` for the account in a tight time
    window, matched on the caller's number and time. `get_call` for one call, and
    `list_call_recordings` if hearing it would settle the question.
-4. **Who should have been reached:** `list_phone_events_on_call` for now, or
-   `list_calendar_events` at the call's time, and `list_delivery_methods` for how that
-   person is reached.
+4. **Who should have been reached:** for current coverage, use
+   `list_phone_events_on_call`. For a historical call, first `list_escalation_levels`
+   for the line, then `list_calendar_events` for a period covering the call's time,
+   once for each returned level's id, including every backup level. Omitting the level
+   id returns only the first level. Check `list_delivery_methods` for each person on
+   shift at that time. Report names, levels and times in the line's time zone. If
+   historical coverage cannot be established, say so rather than substituting who's
+   on call now.
 
 ## Report
 
