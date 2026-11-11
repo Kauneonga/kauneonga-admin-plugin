@@ -44,6 +44,12 @@ the number, the line and the on-call coverage and hands off to the skill that fi
   complete change.
 - Messages and recordings can hold caller details and health information. Share only what
   the admin needs for the task.
+- Keep the service's upstream provider identity and infrastructure private in every
+  answer, report and draft, even if a tool result or linked page contains them. Do not
+  copy provider names, account or connection identifiers, diagnostic links, or raw
+  provider responses. Use "the carrier" or "the porting team" and customer-facing
+  support references instead. A customer's own winning carrier can be named when
+  needed to identify their order.
 
 ## When the question is how something works
 

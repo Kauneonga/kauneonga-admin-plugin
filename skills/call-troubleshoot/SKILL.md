@@ -29,6 +29,11 @@ time zone, the caller's number, and any call id the client has.
 
 ## Report
 
+Keep the service's upstream provider identity and infrastructure private. Summarize
+tool findings in service terms; do not copy provider names, raw responses, diagnostic
+links, or provider account and connection identifiers into answers or drafts. Use
+customer-facing call references; send provider-side investigation to support.
+
 What happened, step by step, with call ids and times in the line's time zone. Keep what
 the records show apart from what's likely. If there's no record of the call at all, it
 probably never reached the service: say so, and ask support to check it with the carrier.
