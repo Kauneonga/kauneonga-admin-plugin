@@ -179,6 +179,8 @@ These skills are packaged with the repository; their availability in your AI ass
 | `ai-receptionists` | Builds and tests AI receptionists |
 | `message-triage` | Reviews messages and To Dos |
 | `reports-and-quality` | Analyzes activity and service quality |
+| `port-out-check` | Checks numbers leaving for another carrier |
+| `call-troubleshoot` | Traces calls that didn't ring through |
 
 ## Privacy
 

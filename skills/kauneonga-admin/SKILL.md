@@ -19,12 +19,14 @@ needs several, say the order first. When nothing fits, use the connector's tools
 | Create, test, publish or improve an AI receptionist | `ai-receptionists` |
 | Find, review or act on messages and To Dos | `message-triage` |
 | Activity reports, call and SMS records, QA scores, service levels | `reports-and-quality` |
+| Numbers leaving for another carrier: is the order in, does it match, what date | `port-out-check` |
+| Calls not ringing through, dropping or going to the wrong place | `call-troubleshoot` |
 
 **A new client:** `new-client` first. It hands off to `numbers-and-porting`,
 `call-scripts`, `on-call-setup` and, if they want one, `ai-receptionists`.
 
-**Calls aren't reaching the right person:** check the line's on-call coverage with
-`on-call-setup`, then the line's routing with `phone-lines`.
+**Calls aren't reaching the right person:** start with `call-troubleshoot`, which checks
+the number, the line and the on-call coverage and hands off to the skill that fixes it.
 
 ## Access
 
