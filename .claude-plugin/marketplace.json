@@ -12,7 +12,7 @@
       "name": "kauneonga-admin",
       "source": "./",
       "description": "Run your answering service from Claude with your own Admin Portal login: set up clients, phone lines and numbers, port numbers in, build call scripts, on-call calendars and AI receptionists, and review messages and reports.",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "author": {
         "name": "Kauneonga LLC",
         "url": "https://www.kauneonga.com"
