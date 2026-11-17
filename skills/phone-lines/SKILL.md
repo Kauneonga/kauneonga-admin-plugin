@@ -21,15 +21,23 @@ instructions, agent notes, or its skill. Read the line back with `get_phone`.
 
 ## IVR
 
-1. `get_phone_ivr` first.
+1. `get_phone_ivr` first. Its `mode` says whether callers hear the classic menu or the
+   Enhanced IVR flow. Changing the one that isn't in use changes nothing callers hear.
 2. **Classic menu:** `update_phone_ivr`. The menu keys you send replace every key, so
    send the complete list. A key can go to a line, to voicemail or to an outside number.
+   A key that plays a recording (`plays_recording`) is made and changed only on the IVR
+   page: send it back as `{"dtmf": N, "keep_recording": true}` so it stays.
+   A wrong key hears the `invalid_dtmf_text` while the greeting is text-to-speech. With a
+   recorded greeting it hears the line's invalid-key recording instead (`invalid_dtmf`
+   below), or a default until one is added.
 3. **Enhanced IVR flow:** `update_phone_ivr_flow` replaces the whole flow. Change only
    the nodes asked for and send the complete flow back. A spoken greeting is the node's
-   text.
+   text. Days, times, holidays and caller ID nodes have two branches: `next` when the
+   call matches, `else` when it doesn't. A branch with nothing on it hangs up the call.
 4. **A recording:** if the admin attached the file in the chat, use
-   `update_phone_ivr_audio`. Otherwise `get_phone_ivr_audio_upload_link` gives them a
-   link to upload it themselves, valid for 30 minutes.
+   `update_phone_ivr_audio` with the slot: `greeting`, `invalid_dtmf`, `voicemail`,
+   `hold_music`, or `node` with the node's id. Otherwise `get_phone_ivr_audio_upload_link`
+   gives them a link to upload it themselves, valid for 30 minutes.
 
 These change how live calls are answered. Say exactly which callers are affected and when.
 

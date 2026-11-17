@@ -13,7 +13,9 @@ time zone, the caller's number, and any call id the client has.
 1. **The number:** `get_number` - whether it's active, which line uses it, and its
    forwarding. Forwarding set to always sends every call away before the service sees it.
 2. **The line:** `search_accounts` with the number, then `get_phone`, and `get_phone_ivr`
-   if callers go through a menu.
+   if callers go through a menu. In an Enhanced IVR, a days, times, holidays or caller ID
+   branch with nothing on it hangs up the call, a common cause of calls that drop
+   after hours.
 3. **The call:** with a call id, `list_calls` with `call_sid` finds it at any age.
    Otherwise `list_inbound_calls` or `list_recent_calls` for the account in a tight time
    window, matched on the caller's number and time. `get_call` for one call, and
