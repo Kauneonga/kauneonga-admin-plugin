@@ -26,6 +26,11 @@ EXPECTED_SKILLS = {
     "port-out-check",
     "call-troubleshoot",
     "ai-receptionist-fix",
+    "message-delivery",
+    "texting-troubleshoot",
+    "agents-and-queues",
+    "callbacks-and-to-dos",
+    "portal-access",
 }
 # Words and phrases public material must not contain: internal systems, vendors,
 # staff-only roles and other brands. Stored as SHA-256 hashes of the lowercase

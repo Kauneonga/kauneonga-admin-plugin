@@ -182,6 +182,11 @@ These skills are packaged with the repository; their availability in your AI ass
 | `reports-and-quality` | Analyzes activity and service quality |
 | `port-out-check` | Checks numbers leaving for another carrier |
 | `call-troubleshoot` | Traces calls that didn't ring through |
+| `message-delivery` | Traces a message that didn't reach the right person |
+| `texting-troubleshoot` | Traces texts that aren't arriving or are going to the wrong place |
+| `agents-and-queues` | Looks into long waits, abandoned calls and agents not taking calls |
+| `callbacks-and-to-dos` | Traces a callback or follow-up that didn't happen |
+| `portal-access` | Works out why a client login can't see an account, line or messages |
 
 ## Privacy
 

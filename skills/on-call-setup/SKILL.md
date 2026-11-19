@@ -55,6 +55,14 @@ approved.
 `delete_calendar_events`. For a repeating shift, ask whether the change is for one
 date or every date; never assume the series.
 
+**Call order:** on a shared escalation level, calls go to people in each shift's Order
+number on the calendar (`position`, lowest first). Shifts with no number go in the order
+they were added. Texts, emails and app alerts go to everyone on the level at once, so
+order only matters for calls. Editing a person's phone number or a shift doesn't change
+their place. To change it, set the shift's Order number: `position` on
+`update_calendar_event` (or on `create_calendar_event` for a new shift), after a yes. On a
+repeating shift, that changes every date.
+
 ### One date of a repeating shift
 
 "Move Saturday's shift to Dr. Patel" can mean this Saturday or every Saturday. Ask which

@@ -16,17 +16,26 @@ needs several, say the order first. When nothing fits, use the connector's tools
 | A line's details, IVR, SMS routing, phone contacts or account features | `phone-lines` |
 | Write or change a call script | `call-scripts` |
 | Build or change an on-call calendar, escalation levels, contacts and how they're reached | `on-call-setup` |
-| Create, test, publish or improve an AI receptionist | `ai-receptionists` |
+| Create, test, publish or change an AI receptionist | `ai-receptionists` |
+| An AI receptionist is answering badly: too long, wrong facts, won't transfer | `ai-receptionist-fix` |
 | Find, review or act on messages and To Dos | `message-triage` |
 | Activity reports, call and SMS records, QA scores, service levels | `reports-and-quality` |
 | Numbers leaving for another carrier: is the order in, does it match, what date | `port-out-check` |
 | Calls not ringing through, dropping or going to the wrong place | `call-troubleshoot` |
+| A message didn't reach the right person, or arrived late | `message-delivery` |
+| Texts to or from a line not arriving, going to the wrong place, or someone opted out | `texting-troubleshoot` |
+| Agents not taking calls, long waits, abandoned calls, service levels dropping | `agents-and-queues` |
+| A callback or follow-up that didn't happen | `callbacks-and-to-dos` |
+| A client's portal login can't see an account, a line or messages | `portal-access` |
 
 **A new client:** `new-client` first. It hands off to `numbers-and-porting`,
 `call-scripts`, `on-call-setup` and, if they want one, `ai-receptionists`.
 
-**Calls aren't reaching the right person:** start with `call-troubleshoot`, which checks
-the number, the line and the on-call coverage and hands off to the skill that fixes it.
+**Something isn't working:** start with the troubleshooting skill that matches:
+`call-troubleshoot`, `message-delivery`, `texting-troubleshoot`, `agents-and-queues`,
+`callbacks-and-to-dos`, `portal-access` or `ai-receptionist-fix`. Each asks for what's
+missing in one question, checks in a fixed order, keeps what the records show apart from
+what's likely, and hands off to the skill that makes the fix.
 
 ## Access
 
@@ -36,7 +45,8 @@ the number, the line and the on-call coverage and hands off to the skill that fi
   refused, say which access it needs. Never try another account, identity or tool to get
   around a refusal.
 - Look things up before changing them, and never guess an id: search for the account or
-  line, then use the ids the tools return.
+  line, then use the ids the tools return. Search with a short part of a name or the phone
+  number; a full name can miss a different spelling or spacing.
 - Before any change, say in plain words what will happen, including anything that costs
   money, rings a real phone, changes how live calls are answered, or can't be undone.
   Wait for a yes, make the change, then read the result back.

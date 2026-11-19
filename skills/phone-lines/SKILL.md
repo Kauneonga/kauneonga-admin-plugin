@@ -21,7 +21,8 @@ instructions, agent notes, or its skill. Read the line back with `get_phone`.
 
 **Skill:** `get_phone` shows the line's current skill by name. To change it, send
 `skill_name` with the name exactly as `list_skills` shows it (or `skill_id`). A name
-that matches no skill, or more than one, comes back with the choices.
+that matches no skill, or more than one, comes back with the choices. If `list_skills`
+isn't in the tool list yet, ask the admin for the skill's exact name.
 
 ## IVR
 
@@ -43,12 +44,20 @@ that matches no skill, or more than one, comes back with the choices.
    `hold_music`, or `node` with the node's id. Otherwise `get_phone_ivr_audio_upload_link`
    gives them a link to upload it themselves, valid for 30 minutes.
 
+**Queue limit:** `calls_limit` on `get_phone_ivr` is how many callers may wait at once.
+The next caller hears a busy signal or the `calls_limit_text`. A limit of 0 turns away
+every call dialed straight to the number. Change it with `update_phone_ivr`; on an
+Enhanced IVR it's part of the flow's start node.
+
 These change how live calls are answered. Say exactly which callers are affected and when.
 
 ## SMS routing
 
 `list_phone_sms_routing`, then `create_phone_sms_routing` or `update_phone_sms_routing`.
-Say where texts to this number will go before changing it.
+Texts go to the client's inbox, to the agents, or to a schedule that switches between them
+by day and time; outside every window they go to the inbox. Schedule times you send are
+read in the answering service's time zone, so convert from the line's and say both. Say
+where texts to this number will go before changing it.
 
 ## The line's contacts
 
