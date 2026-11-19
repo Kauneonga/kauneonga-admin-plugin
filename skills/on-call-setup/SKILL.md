@@ -15,6 +15,20 @@ Changes here decide who gets paged on real calls.
 `list_calendar_events` for each level in turn, so backup levels aren't missed. Answer with
 names, levels and times in the line's time zone.
 
+**Who gets the line's messages right now:** `get_phone`'s `message_recipients`. That is
+what delivery uses: the default level's current shifts and how each person is reached.
+`list_phone_events_on_call` lists only shifts marked on call, so it can show no one
+while someone still gets every message.
+
+## Cover for a while
+
+To send a line's messages to other people until a set time (testing before go-live, a
+vacation): give them shifts on the default level that end at the handback time, and take
+the regular person off only those covered times (skip whole days with `excluded_dates`;
+for part of a day, change that one occurrence's times). The handback then happens on its
+own. Show who gets the messages before and after with `message_recipients`, and say when
+it switches back.
+
 ## A new calendar
 
 Use `build_on_call_calendar` rather than building levels, people, delivery methods and

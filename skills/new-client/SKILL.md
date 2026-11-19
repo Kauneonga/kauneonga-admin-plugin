@@ -24,6 +24,12 @@ Show the complete account and its lines in plain words, then `create_account` on
 approved. Read back the account and its lines with `get_account` and
 `list_account_phones`.
 
+Then say who gets each new line's messages: the reply's `message_recipients`. With the
+on-call calendar on, a new line makes the account owner its on-call contact by text and
+email, every day, all day, so the owner gets every message from the first call, test calls
+included. Before any test call, offer to point the line's messages to your own staff
+(`on-call-setup`, "Cover for a while") and back to the client at go-live.
+
 ## 3. Lines and numbers
 
 - **Another line on an existing account:** `create_account_phone`.
