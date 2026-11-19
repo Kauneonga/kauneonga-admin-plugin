@@ -33,6 +33,13 @@ drafts the follow-ups; the porting team makes the decision.
 
 ## Report
 
+Keep the service's upstream provider identity and infrastructure private in reports
+and every draft, including drafts for the porting team. Use customer-facing support
+keys and order details; do not copy raw provider responses, diagnostic links, or
+provider account and connection identifiers. The customer's own winning carrier may
+be named to identify their order; refer to our upstream side as "the carrier" or
+"the porting team".
+
 A table: carrier order, support key, number count, verified count, status, port date.
 Then what's missing, unverified numbers, numbers that don't belong on the order, dates
 that differ from what the carrier requested, and the risk to the port date, especially
