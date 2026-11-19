@@ -8,6 +8,10 @@ description: Answer questions about activity and quality - a client's message vo
 Everything here reads data, except closing or marking SMS conversations. Say the date
 range and time zone with every number, and say when a result was cut off.
 
+The usage, service level, agent, supervisor and coaching tools below come with a connector
+update. If one isn't in the tool list yet, say this connection doesn't offer it yet and
+use the same report in the portal.
+
 ## A client's activity
 
 - `get_report_overview` and `get_report_trend` for an account's totals and trend.
@@ -37,9 +41,12 @@ information; share only what's needed.
 
 ## Quality
 
-- QA scores: `list_qa_ai_overview`, `list_qa_ai_stats`, `list_qa_ai_trends`,
-  `list_qa_ai_leaderboard`, `list_qa_ai_score_distribution`, `list_qa_ai_agents`,
-  `get_qa_ai_agent`, `list_qa_ai_evaluations` and `get_qa_ai_evaluation`.
+- QA scores appear only when this login is linked to a supervisor login. Only if these
+  tools are in the tool list, use them: `list_qa_ai_overview`, `list_qa_ai_stats`,
+  `list_qa_ai_trends`, `list_qa_ai_leaderboard`, `list_qa_ai_score_distribution`,
+  `list_qa_ai_agents`, `get_qa_ai_agent`, `list_qa_ai_evaluations` and
+  `get_qa_ai_evaluation`. Otherwise say QA scores need an admin login linked to a
+  supervisor login, and don't estimate scores from other reports.
 - Coaching: `list_feedback_cases` and `get_feedback_case`.
 
 Report scores with how many calls they're based on, and don't rank agents on a handful of
