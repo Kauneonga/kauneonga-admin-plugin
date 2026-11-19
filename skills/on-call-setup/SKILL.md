@@ -15,6 +15,20 @@ Changes here decide who gets paged on real calls.
 `list_calendar_events` for each level in turn, so backup levels aren't missed. Answer with
 names, levels and times in the line's time zone.
 
+**Who gets the line's messages right now:** `get_phone`'s `message_recipients`. That is
+what delivery uses: the default level's current shifts and how each person is reached.
+`list_phone_events_on_call` lists only shifts marked on call, so it can show no one
+while someone still gets every message.
+
+## Cover for a while
+
+To send a line's messages to other people until a set time (testing before go-live, a
+vacation): give them shifts on the default level that end at the handback time, and take
+the regular person off only those covered times (skip whole days with `excluded_dates`;
+for part of a day, change that one occurrence's times). The handback then happens on its
+own. Show who gets the messages before and after with `message_recipients`, and say when
+it switches back.
+
 ## A new calendar
 
 Use `build_on_call_calendar` rather than building levels, people, delivery methods and
@@ -41,11 +55,19 @@ approved.
 `delete_calendar_events`. For a repeating shift, ask whether the change is for one
 date or every date; never assume the series.
 
+**Call order:** on a shared escalation level, calls go to people in each shift's Order
+number on the calendar (`position`, lowest first). Shifts with no number go in the order
+they were added. Texts, emails and app alerts go to everyone on the level at once, so
+order only matters for calls. Editing a person's phone number or a shift doesn't change
+their place. To change it, set the shift's Order number: `position` on
+`update_calendar_event` (or on `create_calendar_event` for a new shift), after a yes. On a
+repeating shift, that changes every date.
+
 ### One date of a repeating shift
 
 "Move Saturday's shift to Dr. Patel" can mean this Saturday or every Saturday. Ask which
-before changing anything, unless the person already said ("only this Saturday", "from
-now on").
+before changing anything, unless the person already said ("only this Saturday", "every
+Saturday").
 
 - **Only that date:** `create_calendar_event` with action `detach`. `parent_id` is the
   repeating shift, `original_start_date` is that date's start as the calendar shows it
@@ -56,7 +78,11 @@ now on").
   start as `start_date`.
 - **Every date:** `update_calendar_event` with action `update` on the repeating shift.
   Leave `schedule` out so it keeps repeating. If the tool says `schedule` is missing,
-  send the shift's current `schedule` from `get_calendar_event`, unchanged.
+  send the shift's current `schedule` from `get_calendar_event`, unchanged. A repeating
+  shift holds only its current and upcoming dates (past ones roll off), so this is also
+  "from now on".
+- **From a later date on** ("starting December 5"): changing every date would also change
+  the dates before it. Say so and ask how to handle those dates; don't pick for them.
 
 `update_calendar_event` on a repeating shift changes every date of it. Never send
 `schedule` "null" to change one date: that stops the shift repeating and removes every

@@ -29,7 +29,33 @@ time zone, the caller's number, and any call id the client has.
    historical coverage cannot be established, say so rather than substituting who's
    on call now.
 
+## Known causes
+
+Check each against what the records show:
+- **Inactive account:** `get_account`. Callers to an inactive account hear a busy signal.
+- **Forwarding set to always:** `get_number`. Every call is sent away before the service
+  sees it.
+- **An Enhanced IVR branch with nothing on it:** `get_phone_ivr`. A days, times, holidays
+  or caller ID branch with nothing on it hangs up the call.
+- **Spam blocker:** a caller on the blocked list is rejected before the call is answered,
+  and if the account has a spam blocker turned on (`list_account_features`), callers it
+  treats as spam don't reach an agent.
+- **An IVR calls limit of 0:** `get_phone_ivr`. A `calls_limit` of 0 turns away every call
+  dialed straight to that number with a busy signal.
+- **Call order:** on a shared escalation level, calls go to people in each shift's Order
+  number on the calendar; shifts with no number go in the order they were added. Texts,
+  emails and app alerts go to everyone on the level at once, so order only matters for
+  calls. Editing a person's phone number or a shift doesn't change their place: set the
+  shift's Order number (`on-call-setup`).
+- **A person with no delivery method:** on shift, but nothing to reach them by.
+- **A level with no shifts at that time:** nobody on that level is reached.
+
 ## Report
+
+Keep the service's upstream provider identity and infrastructure private. Summarize
+tool findings in service terms; do not copy provider names, raw responses, diagnostic
+links, or provider account and connection identifiers into answers or drafts. Use
+customer-facing call references; send provider-side investigation to support.
 
 What happened, step by step, with call ids and times in the line's time zone. Keep what
 the records show apart from what's likely. If there's no record of the call at all, it
@@ -38,5 +64,6 @@ probably never reached the service: say so, and ask support to check it with the
 ## Fix
 
 Propose the change and hand off to the skill that makes it: `numbers-and-porting` for
-forwarding, `phone-lines` for the menu or routing, `on-call-setup` for coverage or how
-someone is reached. Confirm before any change.
+forwarding, `phone-lines` for the menu, queue limit or routing, `on-call-setup` for
+coverage, call order or how someone is reached, and `agents-and-queues` when callers
+waited too long for an agent. Confirm before any change.

@@ -1,4 +1,4 @@
-# Kauneonga Admin — connect your AI assistant
+# Kauneonga Admin: connect your AI assistant
 
 Use an AI assistant with your answering service's Kauneonga Admin Portal to review messages and reports, manage on-call calendars, update call scripts, configure phone lines, and help set up clients.
 
@@ -24,7 +24,7 @@ You **do not need to write code** to use the Claude or ChatGPT instructions belo
 
 **Before starting:** Have the normal web address for your Admin Portal, your own login, and any required two-factor authentication available. Use only AI accounts and workspaces approved by your organization for client information.
 
-## Claude — full plugin (recommended if you want guided skills)
+## Claude: full plugin (recommended if you want guided skills)
 
 **Plan requirement:** Claude plugins are available on paid Claude plans (Pro, Max, Ultra, Team, or Enterprise). If you use Claude Free, you may not see the Plugins menu.
 
@@ -41,7 +41,7 @@ After signing in, try: **"Show me messages that still need follow-up."**
 
 [Claude's plugin setup guide](https://support.claude.com/en/articles/13837440-use-plugins-in-claude)
 
-## ChatGPT — connect with the MCP server
+## ChatGPT: connect with the MCP server
 
 **If your ChatGPT workspace already provides Kauneonga Admin:**
 
@@ -61,7 +61,7 @@ This is **not** the same as importing the GitHub repository's guided skills. To 
 
 ChatGPT custom MCP support and permission controls vary by plan and workspace. [ChatGPT setup instructions](https://help.openai.com/en/articles/12584461-connecting-custom-mcp-servers-in-chatgpt) · [Plugin packaging](https://developers.openai.com/plugins/build/plugins)
 
-## Gemini — Google AI options
+## Gemini: Google AI options
 
 ### Gemini Enterprise (recommended route for managed business use)
 
@@ -176,11 +176,17 @@ These skills are packaged with the repository; their availability in your AI ass
 | `phone-lines` | Changes phone line settings |
 | `call-scripts` | Writes and updates call scripts |
 | `on-call-setup` | Manages on-call schedules |
-| `ai-receptionists` | Builds and tests AI receptionists |
+| `ai-receptionists` | Builds, changes, tests and publishes AI receptionists |
+| `ai-receptionist-fix` | Fixes an AI receptionist that answers badly |
 | `message-triage` | Reviews messages and To Dos |
 | `reports-and-quality` | Analyzes activity and service quality |
 | `port-out-check` | Checks numbers leaving for another carrier |
 | `call-troubleshoot` | Traces calls that didn't ring through |
+| `message-delivery` | Traces a message that didn't reach the right person |
+| `texting-troubleshoot` | Traces texts that aren't arriving or are going to the wrong place |
+| `agents-and-queues` | Looks into long waits, abandoned calls and agents not taking calls |
+| `callbacks-and-to-dos` | Traces a callback or follow-up that didn't happen |
+| `portal-access` | Works out why a client login can't see an account, line or messages |
 
 ## Privacy
 
