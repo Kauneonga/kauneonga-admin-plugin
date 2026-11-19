@@ -21,7 +21,9 @@ One package serves Claude, ChatGPT and other agents, using the admin connector:
 ## Rules
 
 - Skills name only tools the admin connector serves. When a tool is renamed or removed,
-  update every skill that mentions it.
+  update every skill that mentions it. A tool that arrives with a connector update needs
+  one line saying what to do if it isn't in the tool list yet. QA scores appear only when
+  the admin's login is linked to a supervisor, so skills say that instead of assuming them.
 - The connector enforces access. Skills confirm changes, call out cost, live-call and
   can't-be-undone effects, and never work around a refusal.
 - Public-facing material never names internal systems, vendors or restricted internal roles.
