@@ -25,6 +25,7 @@ EXPECTED_SKILLS = {
     "reports-and-quality",
     "port-out-check",
     "call-troubleshoot",
+    "ai-receptionist-fix",
 }
 # Words and phrases public material must not contain: internal systems, vendors,
 # staff-only roles and other brands. Stored as SHA-256 hashes of the lowercase
