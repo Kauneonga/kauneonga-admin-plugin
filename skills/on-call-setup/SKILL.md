@@ -23,11 +23,16 @@ while someone still gets every message.
 ## Cover for a while
 
 To send a line's messages to other people until a set time (testing before go-live, a
-vacation): give them shifts on the default level that end at the handback time, and take
-the regular person off only those covered times (skip whole days with `excluded_dates`;
+vacation), first list every level the line's messages can go to: the default level, plus
+any level a call script branch sends messages to (`list_agent_scripts` and
+`get_agent_script` for the line's active script; see `call-scripts`). On each of those
+levels, give the stand-ins shifts that end at the handback time, and take the regular
+person off only those covered times (skip whole days with `excluded_dates`;
 for part of a day, change that one occurrence's times). The handback then happens on its
 own. Show who gets the messages before and after with `message_recipients`, and say when
-it switches back.
+it switches back. `message_recipients` covers the
+default level only, so for each other level read `list_calendar_events` for the covered
+period too.
 
 ## A new calendar
 

@@ -17,9 +17,13 @@ calls were abandoned).
 1. **The line:** for one line, `get_phone` shows the skill its calls need, and
    `get_phone_ivr` its queue limit (`calls_limit`). `list_skills` shows how many active
    agents and lines use each skill.
-2. **Who can take those calls:** `list_agents` filtered by that skill's id and by
-   `available`, then `get_agent` for one person: their skills and whether they're
-   available to take calls.
+2. **Who can take those calls:** `list_agents` filtered by that skill's id, with no
+   availability filter, so agents who are signed in but not available still show; then
+   compare who is available. For one named agent, `get_agent` for that person first,
+   before any filter: their skills and whether they're available to take calls.
+   `list_agents` and `get_agent` show availability now, not at the time of a past
+   problem: for a past window, rely on the dated service level and agent performance
+   reports, and label the agent list as a current snapshot.
 3. **Service level:** `get_service_level_report` for the date range: per skill, average
    wait, talk and hold time, calls, abandoned calls and calls that waited over 60 seconds.
    Compare with the same days a week earlier.
@@ -34,7 +38,8 @@ calls were abandoned).
 ## Known causes
 
 - **Not enough agents with the skill:** a line's skill that few agents have, or none
-  available at the time, waits even when other agents are free.
+  available (in the dated reports for a past window), waits even when other agents are
+  free.
 - **Agents signed in but not available:** a low ready percentage, or long hold and wrap
   time keeping agents off the next call.
 - **More calls than usual:** a spike on one skill compared with the same day last week.
