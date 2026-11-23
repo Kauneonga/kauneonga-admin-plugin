@@ -42,4 +42,11 @@ connection the admin sets up themselves.
 - **What it can't do:** it works only on the platform where it was made, acts as the admin
   who made it, and always refuses bulk changes, bulk deletes and edits to a whole repeating
   series.
+- **Deletes:** newer portals show an **Allow deletes** switch on the key. Leave it off
+  unless the job must delete single records; while it's off, the key can add and change
+  records but not delete them. On a portal without the switch, use a role without delete
+  rights, since the role is then what blocks deletes.
+- **Who checks the work:** the key reaches every client the admin who made it can. Use it
+  for jobs where a person reviews changes and replies before they reach a client, never
+  for a bot that answers clients on its own.
 - **Stop it:** delete the key on the **API Keys** tab. It stops working at once.
